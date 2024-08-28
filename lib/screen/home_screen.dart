@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/bloc/weather_bloc_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -64,204 +66,208 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(color: Colors.transparent),
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '📌 Colombo Srilanka',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      "Good Morning",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Image.asset('assets/11.png'),
-                    const Center(
-                      child: Text(
-                        '21°C',
-                        style: TextStyle(fontSize: 40, color: Colors.white),
-                      ),
-                    ),
-                    const Center(
-                      child: Text(
-                        'TUNDERSTORM',
-                        style: TextStyle(
-                            fontSize: 28,
+              BlocBuilder<WeatherBlocBloc, WeatherBlocState>(
+                builder: (context, state) {
+                  return SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '📌 Colombo Srilanka',
+                          style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Friday 16 ◉ 9.57am ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "Good Morning",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Image.asset('assets/11.png'),
+                        const Center(
+                          child: Text(
+                            '21°C',
+                            style: TextStyle(fontSize: 40, color: Colors.white),
+                          ),
+                        ),
+                        const Center(
+                          child: Text(
+                            'TUNDERSTORM',
+                            style: TextStyle(
+                                fontSize: 28,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        const Center(
+                          child: Text(
+                            'Friday 16 ◉ 9.57am ',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: Image.asset(
-                                    'assets/1.png',
-                                  )),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              const Column(
+                              Row(
                                 children: [
-                                  Text(
-                                    "Sunrise",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
+                                  SizedBox(
+                                      height: 50,
+                                      width: 50,
+                                      child: Image.asset(
+                                        'assets/1.png',
+                                      )),
+                                  SizedBox(
+                                    width: 3,
                                   ),
-                                  Text(
-                                    "5.55am",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                width: 120,
-                              ),
-                              SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: Image.asset(
-                                    'assets/14.png',
-                                  )),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              const Column(
-                                children: [
-                                  Text(
-                                    "Sunrise",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
+                                  const Column(
+                                    children: [
+                                      Text(
+                                        "Sunrise",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        "5.55am",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    "5.55am",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  SizedBox(
+                                      height: 50,
+                                      width: 50,
+                                      child: Image.asset(
+                                        'assets/14.png',
+                                      )),
+                                  SizedBox(
+                                    width: 3,
+                                  ),
+                                  const Column(
+                                    children: [
+                                      Text(
+                                        "Sunrise",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        "5.55am",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ],
-                              ),
+                              )
                             ],
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: Divider(
-                        color: Colors.white54,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Divider(
+                            color: Colors.white54,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: Image.asset(
-                                    'assets/5.png',
-                                  )),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              const Column(
+                              Row(
                                 children: [
-                                  Text(
-                                    "Sunrise",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
+                                  SizedBox(
+                                      height: 50,
+                                      width: 50,
+                                      child: Image.asset(
+                                        'assets/5.png',
+                                      )),
+                                  SizedBox(
+                                    width: 3,
                                   ),
-                                  Text(
-                                    "5.55am",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                width: 120,
-                              ),
-                              SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child: Image.asset(
-                                    'assets/8.png',
-                                  )),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              const Column(
-                                children: [
-                                  Text(
-                                    "Sunrise",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
+                                  const Column(
+                                    children: [
+                                      Text(
+                                        "Sunrise",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        "5.55am",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    "5.55am",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  SizedBox(
+                                      height: 50,
+                                      width: 50,
+                                      child: Image.asset(
+                                        'assets/8.png',
+                                      )),
+                                  SizedBox(
+                                    width: 3,
+                                  ),
+                                  const Column(
+                                    children: [
+                                      Text(
+                                        "Sunrise",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        "5.55am",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ],
-                              ),
+                              )
                             ],
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  );
+                },
               )
             ],
           ),
