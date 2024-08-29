@@ -14,6 +14,32 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Widget greeting(DateTime dateTime) {
+    final int hour = dateTime.hour;
+    if (hour >= 5 && hour < 12) {
+      return Text("Good Morning!",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ));
+    } else if (hour >= 12 && hour < 18) {
+      return Text("Good Afternoon!",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ));
+    } else {
+      return Text("Good Evening!",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ));
+    }
+  }
+
   Widget getWetherIcon(int code) {
     switch (code) {
       case > 200 && <= 300:
@@ -114,14 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(
                           height: 8,
                         ),
-                        const Text(
-                          "Good Morning",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        greeting(state.weather.date ?? DateTime.now()),
                         Center(
                           child: getWetherIcon(
                               state.weather.weatherConditionCode!),
@@ -179,6 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width: 3,
                                   ),
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         "Sunrise",
@@ -199,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   const SizedBox(
-                                    width: 100,
+                                    width: 80,
                                   ),
                                   SizedBox(
                                       height: 50,
@@ -211,6 +232,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width: 3,
                                   ),
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         "Sunset",
@@ -260,6 +283,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width: 3,
                                   ),
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         "Temp Max",
@@ -279,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   const SizedBox(
-                                    width: 90,
+                                    width: 60,
                                   ),
                                   SizedBox(
                                       height: 50,
@@ -291,6 +316,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width: 3,
                                   ),
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         "Temp Min",
